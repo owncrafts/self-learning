@@ -50,7 +50,7 @@ And in our root directory of angular
 - Directives
 - Dependency injection
 
-#### Components
+### Components
 
 **Angular documentation says components r main parts of angular which is webed by HTML, CSS and TS**
 
@@ -99,6 +99,73 @@ export class HomeComponent {
 
 ```
 
-##### Life cycle
+### Life cycle
 
 **__It would be better if u read life cycle on your own by [clicking here](https://angular.io/guide/lifecycle-hooks#lifecycle-event-sequence)__**
+
+### There are 3 Types of binding in Angular
+
+- Interpolation Binding ~ `{{variableName}}`
+- Property Binding ~ `<div [innerText]="abcd"...`
+- Event Bindings ~ `<div (click)="functionName()"...`
+
+### Types of Directives
+
+It can be used to change appearience of DOM Element,
+It doesn't have templates.
+
+- **Built in Strucutral Directives**
+
+Ex:
+`*ngIf`,
+`*ngFor`,
+`*ngSwitch`
+
+Example:
+```
+<div 
+    *ngIf="contents?.length>0" 
+    *ngFor="let content of contents" 
+>
+    {{content}}
+</div>
+```
+
+- **Attribute Directives**
+
+Ex:
+`ngClass`,
+`ngStyle`
+
+### Pipes
+
+Pipes is simple things which we used differntly in vanilla js, let me show example for vanilla js
+
+Let's create some varible value to uppercase:
+
+```
+let text = "Hello World!";
+let result = text.toUpperCase();
+
+//Output: HELLO WORLD!
+```
+
+But in angular we can't use those things in HTML templates
+so for the solution there are Pipes
+
+Let me show u example how we can do this with Pipe
+
+```
+<div>
+    {{variableName | Uppercase}} //that's it
+</div>
+```
+
+That was just an example of pipe, pipe is not limited with those things, let me tell u waht fucking we can get with those shits.
+
+- [`DatePipe`](https://angular.io/api/common/DatePipe)	Formats a date value according to locale rules.
+- [`UpperCasePipe`](https://angular.io/api/common/UpperCasePipe)	Transforms text to all upper case.
+- [`LowerCasePipe`](https://angular.io/api/common/LowerCasePipe)	Transforms text to all lower case.
+- [`CurrencyPipe`](https://angular.io/api/common/CurrencyPipe)	Transforms a number to a currency string, - formatted according to locale rules.
+- [`DecimalPipe`](https://angular.io/api/common/DecimalPipe)	Transforms a number into a string with a decimal - point, formatted according to locale rules.
+- [`PercentPipe`](https://angular.io/api/common/PercentPipe)	Transforms a number to a percentage string, formatted according to locale rules.
