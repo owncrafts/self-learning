@@ -1,0 +1,42 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <!-- Repeat this card for each room -->
+    <div *ngFor="let room of roomList" class="bg-gray-200 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+        <!-- <img src={{room.photos[0]}}> -->
+        <gallery id="{{ room.id }}" [items]="room.photos" bullets bulletPosition="bottom"></gallery>
+        <div class="p-4">
+            <h2 class="text-[30px] font-bold text-purple-600 dark:text-purple-400 mb-2">
+                {{ room.name }}
+            </h2>
+            <p class="text-[15px] text-gray-800 dark:text-white mb-2">
+                {{ room.description }}
+            </p>
+            <p class="text-[15px] text-gray-800 dark:text-white font-semibold mb-2">
+                {{ room.price | currency: 'USD' }}
+            </p>
+            <p class="text-[15px] text-gray-800 dark:text-white">
+                Amenities:
+                <span *ngFor="let amenities of room.amenities; index as i">{{ amenities }} {{ i ===
+                    room.amenities.length -
+                    1 ? "" : ", " }}</span>
+            </p>
+            <div class="flex justify-between mt-4">
+                <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+                    Read More
+                </button>
+                <button (click)="copyFunction(room)" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">
+
+                    <svg width="25px" height="25px" viewBox="0 -0.5 25 25" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M17.676 14.248C17.676 15.8651 16.3651 17.176 14.748 17.176H7.428C5.81091 17.176 4.5 15.8651 4.5 14.248V6.928C4.5 5.31091 5.81091 4 7.428 4H14.748C16.3651 4 17.676 5.31091 17.676 6.928V14.248Z"
+                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M10.252 20H17.572C19.1891 20 20.5 18.689 20.5 17.072V9.75195" stroke="#ffffff"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Repeat other room cards here -->
+</div>

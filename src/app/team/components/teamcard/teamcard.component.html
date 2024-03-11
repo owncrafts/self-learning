@@ -1,0 +1,53 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xl text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">ID</th>
+        <th scope="col" class="px-6 py-3">Name</th>
+        <th scope="col" class="px-6 py-3">Email</th>
+        <th scope="col" class="px-6 py-3 text-center">Action</th>
+      </tr>
+    </thead>
+    <tbody class="text-lg">
+      <ng-container *ngFor="let member of team">
+        <tr [id]="'row_' + member.id" *ngIf="editable && findObjectById(member.id)?.editable; else elseBlock"
+          class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-100 even:dark:bg-gray-800 border-b dark:border-gray-700">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ member.id }}
+          </th>
+            <td class="px-6 py-4">
+              <input class="text-gray-800" [id]="'username_' + member.id" type="text" formControlName="username"
+                [value]="member.username" (input)="logThis($event, member.id, 'username')" />
+            </td>
+            <td class="px-6 py-4">
+              <div *ngIf="
+              editable && findObjectById(member.id)?.editable;
+            ">
+                <input class="text-gray-800" [id]="'email_' + member.id" type="text" formControlName="email"
+                  [value]="member.email" (input)="logThis($event, member.id, 'email')" />
+              </div>
+            </td>
+            <td (click)="setEditable(member.id)" class="px-6 py-4 cursor-pointer text-center hover:bg-gray-300  dark:hover:bg-slate-800">
+              <a 
+                class="font-medium text-blue-600 dark:text-blue-500 hover:underline ">
+                <span>
+                  Update
+                </span>
+              </a>
+            </td>
+        </tr>
+        <ng-template #elseBlock>
+          <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-100 even:dark:bg-gray-800 border-b dark:border-gray-700">
+            <td class="px-6 py-4">{{ member.id }}
+            <td class="px-6 py-4">{{ member.username }}</td>
+            <td class="px-6 py-4">{{ member.email }}</td>
+            <td  (click)="setEditable(member.id)" class="px-6 py-4 cursor-pointer hover:bg-gray-300  dark:hover:bg-slate-800 text-center">
+              <a
+                class="font-medium text-blue-600 dark:text-blue-500 hover:underline ">Edit</a>
+            </td>
+          </tr>
+        </ng-template>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

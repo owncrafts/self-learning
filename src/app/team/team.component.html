@@ -1,0 +1,10 @@
+<div class="bg-white dark:bg-gray-900 text-gray-800 dark:text-white">
+    <div class="container mx-auto p-4">
+        <div class="border-b-2 border-purple-500 mb-8 flex justify-center mx-auto">
+            <h1 class="text-[40px] font-bold text-center border-b-4 border-purple-500 py-3 px-5">
+                My Team
+            </h1>
+        </div>
+        <app-teamcard [team]="team" (onUpdateTeamMember)="updateUser($event)"></app-teamcard>
+    </div>
+</div>
